@@ -4,7 +4,7 @@ import { CartProvider } from "./context/CartContext";
 import { ThemeProvider } from "./context/ThemeContext";
 import { AuthProvider } from "./context/AuthContext";
 
-import Layout from "./components/Layout";
+import Layout from "./components/Layout"; 
 import Home from "./pages/Home";
 import Products from "./pages/Products";
 import ProductDetail from "./pages/ProductDetail";
@@ -12,7 +12,8 @@ import Cart from "./pages/Cart";
 import Admin from "./pages/Admin";
 import Offers from "./pages/Offers";
 import Login from "./pages/Login";
-import NotFound from "./pages/NotFound";
+import NotFound from "./pages/NotFound"; 
+
 
 function App() {
   return (

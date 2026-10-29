@@ -13,7 +13,15 @@ function CartItem({ product, quantity }: CartItemProps) {
 
   return (
     <div className="cart-item">
-      <h2>{product.image}</h2>
+      <div className="cart-item-image">
+        {product.image && (product.image.startsWith("http") || product.image.startsWith("/images/")) ? (
+          <img src={product.image} alt={product.name} style={{ width: "90px", height: "90px", objectFit: "contain" }} />
+        ) : product.image && /\.(jpg|jpeg|png|webp|svg)$/i.test(product.image) ? (
+          <img src={`/images/${product.image}`} alt={product.name} style={{ width: "90px", height: "90px", objectFit: "contain" }} />
+        ) : (
+          <span style={{ fontSize: "70px" }}>{product.image || "🛒"}</span>
+        )}
+      </div>
 
       <div>
         <h3>{product.name}</h3>

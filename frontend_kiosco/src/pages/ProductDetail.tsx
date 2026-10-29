@@ -72,11 +72,11 @@ function ProductDetail() {
       <div className="detail-card">
         <div className="detail-image">
           {product.image && (product.image.startsWith("http") || product.image.startsWith("/images/")) ? (
-            <img src={product.image} alt={product.name} style={{ maxWidth: "200px", maxHeight: "200px" }} />
+            <img src={product.image} alt={product.name} style={{ maxWidth: "320px", maxHeight: "320px", objectFit: "contain" }} />
           ) : product.image && /\.(jpg|jpeg|png|webp|svg)$/i.test(product.image) ? (
-            <img src={`/images/${product.image}`} alt={product.name} style={{ maxWidth: "200px", maxHeight: "200px" }} />
+            <img src={`/images/${product.image}`} alt={product.name} style={{ maxWidth: "320px", maxHeight: "320px", objectFit: "contain" }} />
           ) : (
-            <span>{product.image || "🛒"}</span>
+            <span style={{ fontSize: "140px" }}>{product.image || "🛒"}</span>
           )}
         </div>
 

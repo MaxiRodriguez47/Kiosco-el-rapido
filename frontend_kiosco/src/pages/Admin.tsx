@@ -189,7 +189,15 @@ function Admin() {
             <tbody>
               {products.map((product) => (
                 <tr key={product.id}>
-                  <td>{product.image}</td>
+                  <td>
+                    {product.image && (product.image.startsWith("http") || product.image.startsWith("/images/")) ? (
+                      <img src={product.image} alt={product.name} style={{ width: "50px", height: "50px", objectFit: "contain" }} />
+                    ) : product.image && /\.(jpg|jpeg|png|webp|svg)$/i.test(product.image) ? (
+                      <img src={`/images/${product.image}`} alt={product.name} style={{ width: "50px", height: "50px", objectFit: "contain" }} />
+                    ) : (
+                      <span>{product.image || "🛒"}</span>
+                    )}
+                  </td>
                   <td>
                     <input type="text" value={product.name} onChange={(e) => handleChange(product.id, "name", e.target.value)} />
                   </td>

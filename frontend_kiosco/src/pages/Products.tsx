@@ -50,29 +50,7 @@ function Products() {
         Elegí los productos que quieras comprar
       </p>
 
-      <div className="filters">
-        <label htmlFor="category">Filtrar por categoría: </label>
 
-        <select
-          id="category"
-          value={category}
-          onChange={(e) => {
-            const value = e.target.value;
-
-            if (value === "todos") {
-              setSearchParams({});
-            } else {
-              setSearchParams({ category: value });
-            }
-          }}
-        >
-          <option value="todos">Todos</option>
-          <option value="bebidas">Bebidas</option>
-          <option value="snacks">Snacks</option>
-          <option value="golosinas">Golosinas</option>
-          <option value="varios">Varios</option>
-        </select>
-      </div>
 
       {search && (
         <p style={{ textAlign: "center" }}>

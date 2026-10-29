@@ -55,7 +55,15 @@ function Offers() {
             {offers.map((offer) => (
               <div key={offer.id} className="offer-card">
                 <div className="offer-badge">-{offer.discount_percent}%</div>
-                <div className="offer-image">{offer.product.image}</div>
+                <div className="offer-image">
+                  {offer.product.image && (offer.product.image.startsWith("http") || offer.product.image.startsWith("/images/")) ? (
+                    <img src={offer.product.image} alt={offer.product.name} style={{ maxWidth: "140px", maxHeight: "140px", objectFit: "contain" }} />
+                  ) : offer.product.image && /\.(jpg|jpeg|png|webp|svg)$/i.test(offer.product.image) ? (
+                    <img src={`/images/${offer.product.image}`} alt={offer.product.name} style={{ maxWidth: "140px", maxHeight: "140px", objectFit: "contain" }} />
+                  ) : (
+                    <span>{offer.product.image || "🛒"}</span>
+                  )}
+                </div>
                 <h3>{offer.product.name}</h3>
                 <div className="offer-prices">
                   <span className="offer-original-price">${formatPriceARS(offer.original_price)}</span>
@@ -87,8 +95,16 @@ function Offers() {
                 <h3>{combo.name}</h3>
                 <div className="combo-items">
                   {combo.items.map((item: any, idx: number) => (
-                    <div key={idx} className="combo-item">
-                      <span>{item.image}</span>
+                    <div key={idx} className="combo-item" style={{ flexDirection: "column", alignItems: "center", textAlign: "center", gap: "8px" }}>
+                      <span>
+                        {item.image && (item.image.startsWith("http") || item.image.startsWith("/images/")) ? (
+                          <img src={item.image} alt={item.name} style={{ width: "90px", height: "90px", objectFit: "contain" }} />
+                        ) : item.image && /\.(jpg|jpeg|png|webp|svg)$/i.test(item.image) ? (
+                          <img src={`/images/${item.image}`} alt={item.name} style={{ width: "90px", height: "90px", objectFit: "contain" }} />
+                        ) : (
+                          <span style={{ fontSize: "60px" }}>{item.image || "🛒"}</span>
+                        )}
+                      </span>
                       <span>{item.name} x{item.quantity}</span>
                     </div>
                   ))}
