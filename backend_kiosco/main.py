@@ -38,6 +38,11 @@ def root():
     return {"message": "Kiosco El Rápido API", "docs": "/docs"}
 
 
+@app.get("/health")
+def health():
+    return {"status": "ok"}
+
+
 # Seed data
 def seed_data():
     db = SessionLocal()
